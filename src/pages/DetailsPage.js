@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import './DetailsPage.css';
-import { useFetching } from "../hooks/useFetching";
 import DataService from "../api/DataService";
+import { useFetching } from "../hooks/useFetching";
 import Loader from "../components/UI/Loader/Loader";
+import './DetailsPage.css';
 
 const DetailsPage = () => {
   const [data, setData] = useState({});
@@ -31,9 +31,9 @@ const DetailsPage = () => {
 
   const renderComment = (comment) => {
     return (
-      <div className="comment">
+      <div className="comment" key={comment.id}>
         <div className="comment-inner">
-          <p>User name: {comment.name}</p>
+          <p>User name: {comment.user}</p>
           {comment?.content &&
             <>
               <p>Content: </p>

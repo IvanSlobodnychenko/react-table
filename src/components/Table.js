@@ -13,7 +13,7 @@ const Table = ({data, selectedSort, onSetSelectedSort, onPageChange, hasMoreData
     time_ago: 'Time ago',
   }
 
-  const renderHeadCell = (key) => {
+  const renderArrow = (key) => {
     if (selectedSort.key === key) {
       return selectedSort.order ? <span className='arrow'/> : <span className='arrow arrow-top'/>
     }
@@ -26,7 +26,7 @@ const Table = ({data, selectedSort, onSetSelectedSort, onPageChange, hasMoreData
 
     observer.current = new IntersectionObserver(entries => {
       if (entries[0].isIntersecting && hasMoreData) {
-        onPageChange()
+        onPageChange();
       }
     });
 
@@ -57,8 +57,7 @@ const Table = ({data, selectedSort, onSetSelectedSort, onPageChange, hasMoreData
                   onClick={() => onSetSelectedSort({order: !selectedSort.order, key})}
               >
                 <div className='table-cell'>
-                  {value}
-                  {renderHeadCell(key)}
+                  {value} {renderArrow(key)}
                 </div>
               </th>
             )
